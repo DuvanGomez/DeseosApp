@@ -7,7 +7,7 @@ import { ListaDeseosService } from '../../app/services/lista-deseos.services';
 })
 
 export class PendientesComponent implements OnInit {
-    constructor( private listaDeseos: ListaDeseosService ) {
+    constructor( private _listaDeseos: ListaDeseosService ) {
 
      }
 

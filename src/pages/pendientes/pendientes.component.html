@@ -1,18 +1,61 @@
 <ion-header>
-        <ion-navbar>
+        <ion-navbar color="primary">
           <ion-title>Lista de Pendientes</ion-title>
         </ion-navbar>
       </ion-header>
       
       <ion-content padding>
-      
-        <h1>Pendientes...</h1>
-      
-        <ion-list>
-          <ion-item *ngFor="let lista of listaDeseos.listas">
-            {{ lista.nombre }}
-          </ion-item>
-        </ion-list>
+    
+
+        <ion-card *ngFor="let lista of _listaDeseos.listas">
+
+<ion-item>
+  Boton
+  <h2> {{ lista.nombre }} </h2>
+</ion-item>
+
+<ion-list>
+  <ion-item>
+      <ion-icon ios="ios-arrow-dropright-circle" md="md-arrow-dropright-circle"></ion-icon>
+      tetris
+    </ion-item>
+    <ion-item>
+        <ion-icon ios="ios-arrow-dropright-circle" md="md-arrow-dropright-circle"></ion-icon>
+        tetris
+      </ion-item>
+      <ion-item>
+          <ion-icon ios="ios-arrow-dropright-circle" md="md-arrow-dropright-circle"></ion-icon>
+          tetris
+        </ion-item>
+</ion-list>
+
+
+<ion-fab right bottom>
+    <button ion-fab color="dark"><ion-icon ios="ios-add" md="md-add"></ion-icon></button>
+    <ion-fab-list side="left">
+      <button ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
+      <button ion-fab><ion-icon name="logo-twitter"></ion-icon></button>
+      <button ion-fab><ion-icon name="logo-vimeo"></ion-icon></button>
+      <button ion-fab><ion-icon name="logo-googleplus"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
+
+
+
+           
+          
+          </ion-card>
+
+
 
       </ion-content>
       
+    <!--  
+      <ion-card-header>
+          <h2> {{ lista.nombre }} </h2>
+        </ion-card-header>
+      
+        <ion-card-content>
+            <ion-icon ios="ios-arrow-dropright-circle" md="md-arrow-dropright-circle"></ion-icon>
+        </ion-card-content>
+      -->
