@@ -3,23 +3,34 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
+// services
+import { ListaDeseosService } from './services/lista-deseos.services';
+
+//pipes
+import { PlaceHolderPipe } from './pipes/placeholder.pipe';
+import { PendientesPipe } from './pipes/pendientes.pipe';
+
 
 import { PendientesComponent } from '../pages/pendientes/pendientes.component';
 import { TerminadosComponent } from '../pages/terminados/terminados.component';
-import { TabsPage } from '../pages/tabs/tabs';
+import { AgregarComponent } from '../pages/agregar/agregar.component';
+import { DetalleComponent } from '../pages/detalle/detalle.component';
 
+import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
-import { ListaDeseosService } from './services/lista-deseos.services';
 
 
 @NgModule({
   declarations: [
     MyApp,
+    PlaceHolderPipe,
+    PendientesPipe,
     PendientesComponent,
     TerminadosComponent,
+    AgregarComponent,
+    DetalleComponent,
     TabsPage
   ],
   imports: [
@@ -31,6 +42,8 @@ import { ListaDeseosService } from './services/lista-deseos.services';
     MyApp,
     PendientesComponent,
     TerminadosComponent,
+    AgregarComponent,
+    DetalleComponent,
     TabsPage
     
   ],

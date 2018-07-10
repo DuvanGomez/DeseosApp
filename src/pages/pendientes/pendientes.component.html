@@ -5,57 +5,52 @@
       </ion-header>
       
       <ion-content padding>
+
+        <ion-grid *ngIf="( _listaDeseos.listas | pendientes ).length === 0">
+          <ion-row>
+            <ion-col class="caja-vacia" text-center>
+              <ion-icon class="icono-grande" ios="ios-sunny" md="md-sunny"></ion-icon>
+              <p>
+                No hay ninguna lista.
+              </p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
     
 
-        <ion-card *ngFor="let lista of _listaDeseos.listas">
+        <ion-card *ngFor="let lista of _listaDeseos.listas | pendientes ; let i = index">
 
-<ion-item>
-  Boton
-  <h2> {{ lista.nombre }} </h2>
-</ion-item>
+          <ion-item color="dark" class="lista" (click)="verDetalle(lista, i)">
+            <h2 >{{ lista.nombre }}</h2>
+            <ion-note item-right>
+              <h3>{{ lista.items.length }} items </h3>
+            </ion-note>
+          </ion-item>
 
-<ion-list>
-  <ion-item>
-      <ion-icon ios="ios-arrow-dropright-circle" md="md-arrow-dropright-circle"></ion-icon>
-      tetris
-    </ion-item>
-    <ion-item>
-        <ion-icon ios="ios-arrow-dropright-circle" md="md-arrow-dropright-circle"></ion-icon>
-        tetris
-      </ion-item>
-      <ion-item>
-          <ion-icon ios="ios-arrow-dropright-circle" md="md-arrow-dropright-circle"></ion-icon>
-          tetris
-        </ion-item>
-</ion-list>
+          <ion-list>
 
-
-<ion-fab right bottom>
-    <button ion-fab color="dark"><ion-icon ios="ios-add" md="md-add"></ion-icon></button>
-    <ion-fab-list side="left">
-      <button ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
-      <button ion-fab><ion-icon name="logo-twitter"></ion-icon></button>
-      <button ion-fab><ion-icon name="logo-vimeo"></ion-icon></button>
-      <button ion-fab><ion-icon name="logo-googleplus"></ion-icon></button>
-    </ion-fab-list>
-  </ion-fab>
-
-
-
-           
+            <ion-item (click)="verDetalle(lista, i)"
+              *ngFor="let item of lista.items | slice:0:2 ">
+                <ion-icon *ngIf="!item.completado" ios="ios-square-outline" md="md-square-outline"></ion-icon>
+                <ion-icon *ngIf="item.completado" ios="ios-checkbox-outline" md="md-checkbox-outline"></ion-icon>
+                {{ item.nombre }}
+            </ion-item>
+            <ion-item text-center *ngIf="lista.items.length > 2">
+                <ion-icon color="primary" ios="ios-arrow-dropdown" md="md-arrow-dropdown"></ion-icon>
+            </ion-item>
+             
+          </ion-list>
           
-          </ion-card>
+
+        </ion-card>
+
+        <ion-fab right bottom>
+          <button ion-fab color="dark" (click)="irAgregar()">
+            <ion-icon ios="ios-add" md="md-add"></ion-icon>
+          </button>
+        </ion-fab>
 
 
 
       </ion-content>
       
-    <!--  
-      <ion-card-header>
-          <h2> {{ lista.nombre }} </h2>
-        </ion-card-header>
-      
-        <ion-card-content>
-            <ion-icon ios="ios-arrow-dropright-circle" md="md-arrow-dropright-circle"></ion-icon>
-        </ion-card-content>
-      -->
