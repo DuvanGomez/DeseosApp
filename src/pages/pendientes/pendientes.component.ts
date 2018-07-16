@@ -13,8 +13,15 @@ import { DetalleComponent } from '../detalle/detalle.component';
 })
 
 export class PendientesComponent implements OnInit {
+    mostrar: boolean;
+    cantidad: number;
+    activo: number;
     constructor( private _listaDeseos: ListaDeseosService,
                 private navCtrl: NavController ) {
+
+                    this.mostrar= false;
+                    this.cantidad = 2;
+                    
 
      }
 
@@ -26,4 +33,15 @@ export class PendientesComponent implements OnInit {
     verDetalle(lista: Lista, idx: number) {
         this.navCtrl.push( DetalleComponent, { lista, idx });
     }
+    mostrarItems( lista: Lista, jdx: number) {
+        this.mostrar = !this.mostrar; 
+        this.activo = jdx;
+        if( this.mostrar == false ){
+            this.cantidad = 2;
+        } else{
+            this.cantidad = lista.items.length;
+        }
+        return this.cantidad, this.activo;
+    }
+
 }
